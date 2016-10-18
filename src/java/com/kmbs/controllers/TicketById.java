@@ -14,6 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 import com.google.gson.*;
+import com.kmbs.common.DataAccess;
 import com.kmbs.models.ticket;
 
 /**
@@ -30,6 +31,11 @@ public class TicketById {
     
     public String getTicket( @PathParam("id") int id )
     {
+       String[] args = new String[1]; 
+       
+       args[0] = "test";
+       
+       DataAccess.main(args);
        
        Gson gson = new Gson();
         
@@ -41,7 +47,8 @@ public class TicketById {
         
         rTicket.setDesc("Test Description");
         
-        String jsonStr = gson.toJson(rTicket);
+        //String jsonStr = gson.toJson(rTicket);
+        String jsonStr = gson.toJson(DataAccess.main(args));
 
         return jsonStr;
     }
